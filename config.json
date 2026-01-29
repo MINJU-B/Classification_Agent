@@ -1,0 +1,20 @@
+{
+  "COLLECT_DB_DSN": "host=10.10.17.176 port=5432 dbname=postgres user=katech password=katech",
+  "COLLECT_DB_HOST": "10.10.17.176",
+  "COLLECT_DB_PORT": 5432,
+  "COLLECT_DB_NAME": "postgres",
+  "COLLECT_DB_USER": "katech",
+  "COLLECT_DB_PASSWORD": "katech",
+  "CLASSIFY_DB_DSN": "host=10.10.16.176 port=5432 dbname=postgres user=katech password=katech",
+  "CLASSIFY_DB_HOST": "10.10.16.176",
+  "CLASSIFY_DB_PORT": 5432,
+  "CLASSIFY_DB_NAME": "postgres",
+  "CLASSIFY_DB_USER": "katech",
+  "CLASSIFY_DB_PASSWORD": "katech",
+  "EXAONE_API_URL": "https://api-gateway.bigdata-car.kr/llm-exaone/v1/api/v1/chat/completions",
+  "EXAONE_API_KEY": "46c89eca-616a-4012-ab41-cc577a5a4eb6",
+  "EXAONE_MODEL_NAME": "./exaone",
+  "BATCH_SIZE": 5,
+  "DAILY_AT": false,
+  "SLEEP_SEC": 0.15
+}
