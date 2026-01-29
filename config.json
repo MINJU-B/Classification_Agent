@@ -14,7 +14,7 @@
   "EXAONE_API_URL": "https://api-gateway.bigdata-car.kr/llm-exaone/v1/api/v1/chat/completions",
   "EXAONE_API_KEY": "46c89eca-616a-4012-ab41-cc577a5a4eb6",
   "EXAONE_MODEL_NAME": "./exaone",
-  "BATCH_SIZE": 5,
+  "BATCH_SIZE": 1,
   "DAILY_AT": false,
   "SLEEP_SEC": 0.15
 }

@@ -94,9 +94,9 @@ ON CONFLICT (ds_id) DO UPDATE SET
   confidence = EXCLUDED.confidence,
   status = EXCLUDED.status,
   error_message = EXCLUDED.error_message,
-  modified_at = NOW();
-	input_tokens = EXCLUDED.input_tokens,
-	output_tokens = EXCLUDED.output_tokens
+  modified_at = NOW(),
+  input_tokens = EXCLUDED.input_tokens,
+  output_tokens = EXCLUDED.output_tokens;
 """
 
 def normalize_text(s: Optional[str], max_len: int) -> str:
@@ -160,7 +160,7 @@ def exaone_call(system: str, user: str) -> Tuple[bool, Optional[float]]:
         "temperature": 0.7,
     }
 
-    r = requests.post(EXAONE_API_URL, headers=headers, json=payload)
+    r = requests.post(EXAONE_API_URL, headers=headers, json=payload, timeout=30)
     r.raise_for_status()
     res = r.json()
 
@@ -345,7 +345,7 @@ def run_once(batch_size: int) -> None:
                 with classify_conn.cursor() as cur:
                     cur.execute(
                         UPSERT_SQL,
-                        (ds_is, title, notes, MODEL_NAME, False, 99, "title/notes 정보 부족", None, "SUCCESS", None)
+                        (ds_is, title, notes, MODEL_NAME, False, 99, "title/notes 정보 부족", None, "SUCCESS", None, None, None)
                     )
                 classify_conn.commit()
                 processed += 1
@@ -377,7 +377,7 @@ def run_once(batch_size: int) -> None:
             with classify_conn.cursor() as cur:
                 cur.execute(
                     UPSERT_SQL,
-                    (ds_is, title, notes, MODEL_NAME, False, None, None, None, "FAILED", str(e))
+                    (ds_is, title, notes, MODEL_NAME, False, None, None, None, "FAILED", str(e), None, None)
                 )
             classify_conn.commit()
 
